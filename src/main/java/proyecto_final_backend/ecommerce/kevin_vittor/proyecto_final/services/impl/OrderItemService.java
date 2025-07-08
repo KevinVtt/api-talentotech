@@ -60,7 +60,7 @@ public class OrderItemService implements IOrderItemService {
         try{
             return orderItemRepository.findAll();
         }catch(RuntimeException e){
-            throw e; // add customs exceptions
+            throw new RuntimeException("Hubo un error inesperado"); // add customs exceptions
         }
     }
 
@@ -69,8 +69,10 @@ public class OrderItemService implements IOrderItemService {
     public Optional<OrderItem> findById(Integer id) {
         try{
             return orderItemRepository.findById(id);
+        } catch(NotFoundException e){
+            throw new NotFoundException("No existe el order item con ese id"); // add customs exceptions
         }catch(RuntimeException e){
-            throw e; // add customs exceptions
+            throw new RuntimeException("Hubo un error inesperado"); // add customs exceptions
         }
     }
 

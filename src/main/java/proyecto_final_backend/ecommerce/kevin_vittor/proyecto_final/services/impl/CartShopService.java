@@ -78,10 +78,8 @@ public class CartShopService implements ICartShopService {
             throw new IllegalArgumentException("El id existe, no se puede persistir");
         }
 
-        // Persistir las órdenes y sus ítems antes de asignarlos
         List<Order> persistedOrders = new ArrayList<>();
         for (Order order : object.getOrders()) {
-            // Persistir los ítems de la orden
             List<OrderItem> persistedItems = new ArrayList<>();
             for (OrderItem item : order.getItems()) {
                 if (item.getId() == null) {
@@ -90,7 +88,6 @@ public class CartShopService implements ICartShopService {
                 persistedItems.add(item);
             }
             order.setItems(persistedItems);
-            // Persistir la orden
             if (order.getId() == null) {
                 order.setCart(object);
                 order = orderRepository.save(order);
@@ -109,10 +106,8 @@ public class CartShopService implements ICartShopService {
                 .orElseThrow(() -> new NotFoundException("No existe el carrito con id: " + id));
 
         if (object.getOrders() != null) {
-            // Persistir las órdenes y sus ítems antes de asignarlos
             List<Order> persistedOrders = new ArrayList<>();
             for (Order order : object.getOrders()) {
-                // Persistir los ítems de la orden
                 List<OrderItem> persistedItems = new ArrayList<>();
                 for (OrderItem item : order.getItems()) {
                     if (item.getId() == null) {
@@ -121,7 +116,6 @@ public class CartShopService implements ICartShopService {
                     persistedItems.add(item);
                 }
                 order.setItems(persistedItems);
-                // Persistir la orden
                 if (order.getId() == null) {
                     order.setCart(cartDb);
                     order = orderRepository.save(order);

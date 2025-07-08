@@ -55,7 +55,7 @@ public class ProductService implements IProductService{
         try{
             return productRepository.findAll();
         }catch(RuntimeException e){
-            throw e; // add customs exceptions
+            throw new RuntimeException("Hubo un error inesperado"); // add customs exceptions
         }
     }
 
@@ -64,8 +64,10 @@ public class ProductService implements IProductService{
     public Optional<Product> findById(Integer id) {
         try{
             return productRepository.findById(id);
+        } catch(NotFoundException e){
+            throw new NotFoundException("No existe el producto con esa id"); // add customs exceptions
         }catch(RuntimeException e){
-            throw e; // add customs exceptions
+            throw new RuntimeException("Hubo un error inesperado"); // add customs exceptions
         }
     }
 

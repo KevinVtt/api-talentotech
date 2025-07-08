@@ -48,7 +48,7 @@ public class CategoryService implements ICategoryService{
         try{
             return categoryRepository.findAll();
         }catch(RuntimeException e){
-            throw e; // add customs exceptions
+            throw new RuntimeException("Hubo un error inesperado"); // add customs exceptions
         }
     }
 
@@ -57,8 +57,10 @@ public class CategoryService implements ICategoryService{
     public Optional<Category> findById(Integer id) {
         try{
             return categoryRepository.findById(id);
-        } catch(RuntimeException e){
-            throw e; // add customs exceptions
+        } catch(NotFoundException e){
+            throw new NotFoundException("No existe la categoria con esa id"); // add customs exceptions
+        }catch(RuntimeException e){
+            throw new RuntimeException("Hubo un error inesperado"); // add customs exceptions
         }
     }
 

@@ -66,7 +66,7 @@ public class OrderService implements IOrderService{
         try{
             return orderRepository.findAll();
         }catch(RuntimeException e){
-            throw e; // add customs exceptions
+            throw new RuntimeException("Hubo un error inesperado"); // add customs exceptions
         }
     }
 
@@ -75,8 +75,10 @@ public class OrderService implements IOrderService{
     public Optional<Order> findById(Integer id) {
         try{
            return orderRepository.findById(id);
+        } catch(NotFoundException e){
+            throw new NotFoundException("No existe el order con esa id"); // add customs exceptions
         }catch(RuntimeException e){
-            throw e; // add customs exceptions
+            throw new RuntimeException("Hubo un error inesperado"); // add customs exceptions
         }
     }
 

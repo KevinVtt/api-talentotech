@@ -42,6 +42,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errors);
     }
 
-
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<Map<String,Object>> RuntimeException(RuntimeException e){
+        errors.put("message",e.getMessage());
+        errors.put("date", LocalDate.now());
+        return ResponseEntity.badRequest().body(errors);
+    }
 
 }
