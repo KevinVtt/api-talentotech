@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ProyectoFinalApplication<proyecto-final>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "proyecto_final_backend.ecommerce.kevin_vittor.proyecto_final.ProyectoFinalApplication",
+            "projectName": "proyecto-final",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
