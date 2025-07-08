@@ -244,4 +244,11 @@ buildNumber.properties
 .history
 .ionide
 
+# Ignorar configuraciones de VS Code
+.vscode/
+
+# Ignorar configuraciones de IntelliJ IDEA
+.idea/
+*.iml
+
 # End of https://www.toptal.com/developers/gitignore/api/maven,java,intellij,visualstudiocode,eclipse
